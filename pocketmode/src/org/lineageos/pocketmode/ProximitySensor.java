@@ -23,9 +23,9 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.util.Log;
-
+import android.os.FileUtils;
 import org.lineageos.internal.util.FileUtils;
-
+import java.io.IOException;
 public class ProximitySensor implements SensorEventListener {
 
     private static final boolean DEBUG = false;
@@ -54,10 +54,10 @@ public class ProximitySensor implements SensorEventListener {
     }
 
     private void setFPProximityState(boolean isNear) {
-        if (FileUtils.isFileWritable(FPC_PROX_NODE)) {
-            FileUtils.writeLine(FPC_PROX_NODE, isNear ? "1" : "0");
-        } else {
-            Log.e(TAG, "Proximity state file " + FPC_PROX_NODE + " is not writable!");
+        try {
+            FileUtils.stringToFile(FPC_PROX_NODE, isNear ? "1" : "0");
+        } catch (IOException e) {
+            Log.e(TAG, "Failed to write to " + FPC_PROX_NODE, e);
         }
     }
 
