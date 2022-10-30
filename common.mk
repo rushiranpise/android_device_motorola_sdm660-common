@@ -66,6 +66,7 @@ PRODUCT_PACKAGES += \
     android.hardware.bluetooth.audio-impl \
     android.hardware.bluetooth@1.0.vendor \
     audio.bluetooth.default \
+    libbt-vendor \
     vendor.qti.hardware.btconfigstore@1.0.vendor
 
 # Boot animation
@@ -81,7 +82,6 @@ PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.4-impl \
     android.hardware.camera.provider@2.4-service \
     camera.device@3.2-impl \
-    libbson.vendor \
     libxml2 \
     vendor.qti.hardware.camera.device@1.0:64
 
